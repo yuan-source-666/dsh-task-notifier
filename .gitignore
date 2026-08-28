@@ -1,0 +1,7 @@
+# lib/ is committed on purpose: DSH git installs get the source tree and run
+# no build step, so a prebuilt lib/ is what makes 'dsh plugin add github:...'
+# work without authorizing a build script.
+node_modules/
+*.tgz
+.tmp/
+lib/tsconfig.tsbuildinfo
