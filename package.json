@@ -1,0 +1,68 @@
+{
+  "name": "dsh-task-notifier",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness community plugin that raises an operating-system notification when one of your tasks finishes: an answered turn, a subagent run, a background job, a completed goal, or a settled workflow - with localized wording, per-source switches and a custom delivery command.",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "cordis.patch.yml",
+    "load.dev.patch.yml",
+    "scripts",
+    "README.md",
+    "README_EN.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepare": "node scripts/build.mjs",
+    "typecheck": "node scripts/build.mjs --noEmit",
+    "test": "node scripts/build.mjs && node tests/smoke-test.mjs",
+    "test:notify": "node scripts/notify-test.mjs",
+    "pack": "node scripts/build.mjs && pnpm pack"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "dsh-bundle",
+    "deepseek-harness",
+    "notification",
+    "desktop-notification",
+    "toast",
+    "task-complete",
+    "agent"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=0.1.0",
+    "@deepseek-ai/schemastery": ">=0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "author": "yuan-source-666",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuan-source-666/dsh-task-notifier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yuan-source-666/dsh-task-notifier/issues"
+  },
+  "homepage": "https://github.com/yuan-source-666/dsh-task-notifier#readme"
+}
