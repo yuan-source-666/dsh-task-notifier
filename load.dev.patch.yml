@@ -1,0 +1,18 @@
+# Dev overlay: run dsh-task-notifier straight from its TypeScript source -
+# no install and no build step. A plugin path must be absolute, and on
+# Windows it must be a file:// URL: the loader hands it to Node's ESM
+# loader, which rejects 'E:/...' as an unknown protocol. A file:/// URL is
+# equally correct on Linux and macOS, so this file always uses that form.
+#
+# Replace <PATH-TO> with the absolute directory that HOLDS this folder - or
+# just run 'node scripts/write-dev-patch.mjs', which fills it in for the
+# machine it is on and prints the ready-to-run command. Starting another
+# copy of dsh replaces no running instance; it serves its own port.
+- insert:
+    - id: task-notifier
+      name: 'file:///E:/ai_agent_workspace/deepseek_harness/dsh-task-notifier/src/index.ts'
+      config:
+        # Everything below is optional; the plugin defaults each field.
+        locale: 'zh'
+        onlySuccess: false
+        sound: true
