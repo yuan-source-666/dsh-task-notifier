@@ -1,0 +1,32 @@
+# dsh-task-notifier bundle patch: inserts the task-completion system notifier
+# into the composition. Install the package next to the harness (or add it to
+# a profile) and every field below can stay out - the plugin ships defaults
+# for all of them. This layer exists to record what a deployment chose:
+#
+#   pnpm dsh web --patch <PATH-TO>/dsh-task-notifier/cordis.patch.yml
+#
+# To load it from source without installing, use load.dev.patch.yml instead.
+- insert:
+    - id: task-notifier
+      name: dsh-task-notifier
+      config:
+        # Master switch: false registers no listener at all.
+        enabled: true
+        # 'zh' = Chinese wording, 'en' = English wording. Titles and the body
+        # template follow the same language unless you set them here.
+        locale: 'zh'
+        # title: 'DSH 任务完成'
+        # failureTitle: 'DSH 任务未正常结束'
+        # bodyTemplate: '{kind}：{task}'   # {kind} {task} {outcome} {ref}
+        # Which finishing signals notify.
+        onTurnEnd: true
+        onSubagentEnd: true
+        onJobDone: true
+        onGoalComplete: true
+        onWorkflowEnd: true
+        # true = stay quiet about failed or cancelled work.
+        onlySuccess: false
+        # false = the desktop pops no notification for work inside a subagent session.
+        includeChildSessions: false
+        sound: true
+        appName: 'DeepSeek Harness'
