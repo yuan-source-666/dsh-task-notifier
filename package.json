@@ -16,9 +16,10 @@
   "files": [
     "lib",
     "src",
+    "tests",
+    "scripts",
     "cordis.patch.yml",
     "load.dev.patch.yml",
-    "scripts",
     "README.md",
     "README_EN.md",
     "CHANGELOG.md",
